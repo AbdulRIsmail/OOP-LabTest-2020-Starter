@@ -51,9 +51,13 @@ public class Gantt extends PApplet {
 	}
 
 	public void displayTasks() {
+		displayChart();
+		displayText();
+	}
+
+	public void displayChart() {
 		float textHeight = 0.8f;
-		float radius = 5;
-		
+
 		stroke(255);
 		fill(255);
 		textAlign(LEFT);
@@ -63,7 +67,11 @@ public class Gantt extends PApplet {
 			line(x, margin, x, height - margin);
 			text(i, x, margin * textHeight);
 		}
+	}
 
+	public void displayText() {
+		float radius = 5;
+		
 		// noStroke() to not display a white stroke around the rectangle
 		noStroke();
 
