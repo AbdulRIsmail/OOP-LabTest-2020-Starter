@@ -42,7 +42,7 @@ public class Gantt extends PApplet {
 		textAlign(CENTER);
 
 		for(int i = 1; i <= numOfDays; i++) {
-			float x = map(i, 1, 30, leftMargin, width - margin);
+			float x = map(i, 1, numOfDays, leftMargin, width - margin);
 			line(x, margin, x, height - margin);
 			text(i, x, margin * textHeight);
 		}
