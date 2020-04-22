@@ -49,7 +49,13 @@ public class Gantt extends PApplet {
 			text(i, x, margin * textHeight);
 		}
 
+		// noStroke() to not display a white stroke around the rectangle
+		noStroke();
+
 		for(int i = 0; i < tasks.size(); i++) {
+			// we need to set fill back to white so all texts can appear as white
+			fill(255);
+
 			float y = map(i, 0, tasks.size(), 2 * margin, height - margin);
 			text(tasks.get(i).getTask(), margin, y);
 
@@ -79,6 +85,7 @@ public class Gantt extends PApplet {
 	
 	public void draw() {
 		background(0);
+		colorMode(HSB);
 		displayTasks();
 	}
 }
