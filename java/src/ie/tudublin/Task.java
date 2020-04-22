@@ -3,10 +3,12 @@ package ie.tudublin;
 import processing.data.TableRow;
 
 public class Task {
+    // private variables
     private String task;
     private int start;
     private int end;
 
+    // constructor
     public Task(String task, int start, int end) {
         this.task = task;
         this.start = start;
