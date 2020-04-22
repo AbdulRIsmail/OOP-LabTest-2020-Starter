@@ -148,6 +148,11 @@ public class Gantt extends PApplet {
 			}
 		}
 	}
+
+	public void mouseReleased() {
+		leftRectSelected = -1;
+		rightRectSelected = -1;
+	}
 	
 	public void setup() {
 		loadTasks();
