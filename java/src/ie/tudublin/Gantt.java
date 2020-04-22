@@ -24,7 +24,9 @@ public class Gantt extends PApplet {
 	}
 
 	public void printTasks() {
-		
+		for (Task t : tasks) {
+			System.out.println(t);
+		}
 	}
 	
 	public void mousePressed() {
