@@ -58,11 +58,17 @@ public class Gantt extends PApplet {
 	public void displayChart() {
 		float textHeight = 0.8f;
 
-		stroke(255);
 		fill(255);
 		textAlign(LEFT);
 
 		for(int i = 1; i <= numOfDays; i++) {
+			// to display different line colours *like how it is on the youtube video example*
+			if (i % 2 == 0) {
+				stroke(80);
+			} else {
+				stroke(160);
+			}
+
 			float x = map(i, 1, numOfDays, leftMargin, width - margin);
 			line(x, margin, x, height - margin);
 			text(i, x, margin * textHeight);
