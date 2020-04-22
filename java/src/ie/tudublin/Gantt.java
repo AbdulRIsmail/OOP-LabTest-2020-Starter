@@ -22,6 +22,7 @@ public class Gantt extends PApplet {
 	private int numOfDays;
 
 	public void settings() {
+		// size of canvas
 		size(800, 600);
 
 		// floats
@@ -36,8 +37,10 @@ public class Gantt extends PApplet {
 	}
 
 	public void loadTasks() {
+		// load the csv and header
 		Table table = loadTable("tasks.csv", "header");
 
+		// iterate through the rows and add it to the arraylist tasks
 		for (TableRow row : table.rows()) {
 			Task t = new Task(row);
 			tasks.add(t);
@@ -45,14 +48,15 @@ public class Gantt extends PApplet {
 	}
 
 	public void printTasks() {
+		// iterate through the arraylist tasks and print it out
 		for (Task t : tasks) {
 			System.out.println(t);
 		}
 	}
 
 	public void displayTasks() {
-		displayChart();
-		displayText();
+		displayChart(); // display the lines and dates
+		displayText(); // display the task text
 	}
 
 	public void displayChart() {
@@ -70,8 +74,8 @@ public class Gantt extends PApplet {
 			}
 
 			float x = map(i, 1, numOfDays, leftMargin, width - margin);
-			line(x, margin, x, height - margin);
-			text(i, x, margin * textHeight);
+			line(x, margin, x, height - margin); // display the lines
+			text(i, x, margin * textHeight); // display the dates above the lines
 		}
 	}
 
@@ -86,7 +90,7 @@ public class Gantt extends PApplet {
 			fill(255);
 
 			float y = map(i, 0, tasks.size(), 2 * margin, height - margin);
-			text(tasks.get(i).getTask(), margin, y);
+			text(tasks.get(i).getTask(), margin, y); // display the task name
 
 			float color = map(i, 0, tasks.size(), 0, 255);
 			fill(color, 255, 255);
@@ -95,6 +99,7 @@ public class Gantt extends PApplet {
 			float rectEnd = map(tasks.get(i).getEnd(), 1, numOfDays, leftMargin, width - margin);
 			float rectWidth = rectEnd - rectStart;
 
+			// display the rectangle
 			rect(rectStart, y - (rectHeight / 2), rectWidth, rectHeight, radius); 
 		}
 	}
