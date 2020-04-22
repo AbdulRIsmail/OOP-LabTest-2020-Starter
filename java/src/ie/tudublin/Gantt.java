@@ -39,12 +39,17 @@ public class Gantt extends PApplet {
 		
 		stroke(255);
 		fill(255);
-		textAlign(CENTER);
+		textAlign(LEFT);
 
 		for(int i = 1; i <= numOfDays; i++) {
 			float x = map(i, 1, numOfDays, leftMargin, width - margin);
 			line(x, margin, x, height - margin);
 			text(i, x, margin * textHeight);
+		}
+
+		for(int i = 0; i < tasks.size(); i++) {
+			float y = map(i, 0, tasks.size(), 2 * margin, height - margin);
+			text(tasks.get(i).getTask(), margin, y);
 		}
 	}
 	
