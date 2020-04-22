@@ -15,6 +15,7 @@ public class Gantt extends PApplet {
 	private float leftMargin;
 	private float margin;
 	private float rectHeight;
+	private float pixels;
 
 	// integers
 	private int leftRectSelected;
@@ -29,6 +30,7 @@ public class Gantt extends PApplet {
 		leftMargin = width / 6;
 		margin = width / 20;
 		rectHeight = 35;
+		pixels = 20;
 
 		// integers
 		leftRectSelected = -1;
@@ -105,8 +107,6 @@ public class Gantt extends PApplet {
 	}
 	
 	public void mousePressed() {
-		float pixels = 20;
-
 		for(int i = 0; i < tasks.size(); i++) {
 			Task task = tasks.get(i);
 
@@ -116,17 +116,21 @@ public class Gantt extends PApplet {
 			float rectBottom = rectTop + rectHeight;
 
 			if(mouseY >= rectTop && mouseY <= rectBottom) {
-				if(mouseX > rectStart - pixels && mouseX < rectStart + pixels) {
+				if(mouseOverRect(rectStart)) {
 					leftRectSelected = i;
 					rightRectSelected = -1;
 				}
 
-				if(mouseX > rectEnd - pixels && mouseX < rectEnd + pixels) {
+				if(mouseOverRect(rectEnd)) {
 					leftRectSelected = -1;
 					rightRectSelected = i;
 				}
 			}
 		}
+	}
+
+	public boolean mouseOverRect(float rectPos) {
+		return (mouseX > rectPos - pixels && mouseX < rectPos + pixels);
 	}
 
 	public void mouseDragged() {
