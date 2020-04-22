@@ -41,4 +41,9 @@ public class Task {
     public void setEnd(int end) {
         this.end = end;
     }
+
+    // methods
+    public String toString() {
+        return "[" + this.task + ", " + this.start + ", " + this.end + "]";
+    }
 }
