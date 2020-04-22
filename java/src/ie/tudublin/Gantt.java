@@ -36,6 +36,8 @@ public class Gantt extends PApplet {
 	public void displayTasks() {
 		int numOfDays = 30;
 		float textHeight = 0.8f;
+		float rectHeight = 35;
+		float radius = 5;
 		
 		stroke(255);
 		fill(255);
@@ -50,6 +52,15 @@ public class Gantt extends PApplet {
 		for(int i = 0; i < tasks.size(); i++) {
 			float y = map(i, 0, tasks.size(), 2 * margin, height - margin);
 			text(tasks.get(i).getTask(), margin, y);
+
+			float color = map(i, 0, tasks.size(), 0, 255);
+			fill(color, 255, 255);
+			
+			float rectStart = map(tasks.get(i).getStart(), 1, numOfDays, leftMargin, width - margin);
+			float rectEnd = map(tasks.get(i).getEnd(), 1, numOfDays, leftMargin, width - margin);
+			float rectWidth = rectEnd - rectStart;
+
+			rect(rectStart, y - rectHeight / 2, rectWidth, rectHeight, radius); 
 		}
 	}
 	
